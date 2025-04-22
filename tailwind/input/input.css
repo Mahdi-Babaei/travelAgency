@@ -69,8 +69,12 @@
     :root {
         --swiper-navigation-color: #fff;
         --swiper-pagination-color: #fff;
-        --swiper-pagination-bottom: 40px;
+        --swiper-pagination-bottom: 30px;
         --swiper-pagination-bullet-size: 10px;
 
+    }
+
+    .swiper-slide img {
+        filter: brightness(0.8);
     }
 }
