@@ -66,5 +66,11 @@
         background: linear-gradient(0deg, rgb(30, 30, 30) 0%, rgba(30, 30, 30, 0.5) 100%);
     }
 
-  
+    :root {
+        --swiper-navigation-color: #fff;
+        --swiper-pagination-color: #fff;
+        --swiper-pagination-bottom: 40px;
+        --swiper-pagination-bullet-size: 10px;
+
+    }
 }

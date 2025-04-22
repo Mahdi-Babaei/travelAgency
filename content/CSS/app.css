@@ -692,6 +692,13 @@ video {
   background: linear-gradient(0deg, rgba(255,251,251,1) 0%, rgba(255, 251, 251, 0.5) 100%);
 }
 
+:root {
+  --swiper-navigation-color: #fff;
+  --swiper-pagination-color: #fff;
+  --swiper-pagination-bottom: 40px;
+  --swiper-pagination-bullet-size: 10px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -801,10 +808,6 @@ video {
 
 .z-30 {
   z-index: 30;
-}
-
-.z-50 {
-  z-index: 50;
 }
 
 .col-span-2 {
@@ -3440,6 +3443,10 @@ video {
     height: 710px;
   }
 
+  .xl\:h-\[810px\] {
+    height: 810px;
+  }
+
   .xl\:h-auto {
     height: auto;
   }
@@ -3522,11 +3529,6 @@ video {
   .xl\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
-  }
-
-  .xl\:text-5xl {
-    font-size: 3rem;
-    line-height: 1;
   }
 
   .xl\:text-\[76px\]\/\[140\%\] {
