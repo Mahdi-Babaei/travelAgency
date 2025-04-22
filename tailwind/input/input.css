@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base{
+    @font-face {
+        font-family: "Rokh";
+        src: url(../../content/Fonts/Rokh/woff2/Rokh-Regular.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Rokh Medium";
+        src: url(../../content/Fonts/Rokh/woff2/Rokh-Medium.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Rokh Bold";
+        src: url(../../content/Fonts/Rokh/woff2/Rokh-Bold.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "RokhFaNum";
+        src: url(../../content/Fonts/Rokh/woff2/RokhFaNum-Bold.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "IranSans";
+        src: url(../../content/Fonts/IranSans/woff2/IRANSansX-Regular.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "IranSans Medium";
+        src: url(../../content/Fonts/IranSans/woff2/IRANSansX-Medium.woff2) format(woff2);
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "IranSans Bold";
+        src: url(../../content/Fonts/IranSans/woff2/IRANSansX-Bold.woff2) format(woff2);
+        font-display: swap;
+    }
+}
+
+@layer components{
+    .overlay{
+        @apply  xl:hidden fixed inset-0 bg-black/40  h-full w-full z-10 transition-all;
+    }
+    .overlay-invisible{
+        @apply opacity-0 invisible;
+    }
+    .overlay-visible{
+        @apply visible opacity-100;
+    }
+    .activeTab {
+        opacity: 1 !important;
+        text-decoration: underline;
+        text-underline-offset: 10px;
+    }
+    .activeTours {
+        display: inline-block !important;
+    }
+    .gradientLight {
+        background: linear-gradient(0deg, rgba(255,251,251,1) 0%, rgba(255, 251, 251, 0.5) 100%);
+    }
+    .gradientDark {
+        background: linear-gradient(0deg, rgb(30, 30, 30) 0%, rgba(30, 30, 30, 0.5) 100%);
+    }
+
+  
+}

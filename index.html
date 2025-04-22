@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafarKon</title>
+    <!-- AOS Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Date picker -->
+    <link rel="stylesheet" href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css">
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="content/CSS/app.css">
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/671cc3e2ce.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-[#FFFBFB] dark:bg-[#1E1E1E]">
+<!-- icons -->
+<svg class="hidden">
+    <symbol id="location-reg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+      </symbol>
+    <symbol id="basket-reg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+      </symbol>
+    <symbol id="user-reg"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+      </symbol>
+    <symbol id="arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </symbol>
+    <symbol id="chevron-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </symbol>
+    <symbol id="date-reg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+      </symbol>
+    <symbol id="menu-bar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </symbol>
+    <symbol id="x-mark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+      </symbol>
+    <symbol id="hotel" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+      </symbol>
+    <symbol id="tour" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25" />
+      </symbol>
+    <symbol id="id-card" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+      </symbol>
+    <symbol id="newspaper" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+      </symbol>
+      <symbol id="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </symbol>
+    <symbol id="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </symbol>
+    
+      <symbol id="star" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+        <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+      </symbol>
+    <symbol id="clock" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </symbol>
+    <symbol id="dollar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+      </symbol>
+    <symbol id="wifi" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+      </symbol>
+    <symbol id="setting" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+      </symbol>
+    <symbol id="like" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z" />
+      </symbol>
+    <symbol id="dislike" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7.498 15.25H4.372c-1.026 0-1.945-.694-2.054-1.715a12.137 12.137 0 0 1-.068-1.285c0-2.848.992-5.464 2.649-7.521C5.287 4.247 5.886 4 6.504 4h4.016a4.5 4.5 0 0 1 1.423.23l3.114 1.04a4.5 4.5 0 0 0 1.423.23h1.294M7.498 15.25c.618 0 .991.724.725 1.282A7.471 7.471 0 0 0 7.5 19.75 2.25 2.25 0 0 0 9.75 22a.75.75 0 0 0 .75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 0 0 2.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384m-10.253 1.5H9.7m8.075-9.75c.01.05.027.1.05.148.593 1.2.925 2.55.925 3.977 0 1.487-.36 2.89-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398-.306.774-1.086 1.227-1.918 1.227h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 0 0 .303-.54" />
+      </symbol>
+      
+      
+      
+</svg>
+
+
+
+    <header>
+        <!-- Header Desktop -->
+        <div class="hidden xl:block border-b border-b-[#404040]/25 dark:border-b-white/25 dark:text-white">
+            <div class="w-[90%] mx-auto pb-4">
+                <div class="flex flex-row pt-5 justify-between items-center">
+                    <div class="flex flex-row gap-x-6">
+                        <div class="flex flex-row gap-x-3">
+                            <img src="content/Images/logo.svg" alt="">
+                            <h1 class="text-2xl font-RokhBold ">سفرکن</h1>
+                        </div>
+                        <div>
+                            <ul class="flex flex-row gap-x-8 font-IranSans text-xl">
+                                <li>هتل</li>
+                                <li>تور داخلی<i class="fa-solid fa-angle-down align-middle pr-2"></i></li>
+                                <li>تور خارجی<i class="fa-solid fa-angle-down align-middle pr-2"></i></li>
+                                <li>بیمه مسافرتی</li>
+                                <li>سفرنامه</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-row gap-x-8 items-center">
+                        
+                        <div class="w-[50px] h-[50px] rounded-full flex justify-center items-center bg-[#5264FF] text-white cursor-pointer">
+                            <div class="flex w-fit items-center gap-x-2" id="theme-toggler">
+                                <svg class="w-6 h-6 dark:hidden"><use href="#moon"></use></svg>
+                                <svg class="w-6 h-6 hidden dark:inline-block"><use href="#sun"></use></svg>
+                            </div>                        </div>
+                        <div class=" text-xl font-IranSansMedium border border-gray-300 dark:border-white/25 px-8 py-3 rounded-full flex items-center gap-x-2">
+                            <svg class="w-6 h-6"><use href="#user-reg"></use></svg>
+                            <button> حساب کاربری</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Mobile -->
+         <div class="xl:hidden border-b border-b-[#404040]/25 dark:border-b-white/25 dark:text-white">
+            <div class="flex flex-row items-center justify-between px-6 py-4 ">
+                <div class="flex flex-row gap-x-3">
+                    <img src="content/Images/logo.svg" alt="">
+                    <h1 class="text-2xl font-RokhBold ">سفرکن</h1>
+                </div>
+                <svg class="w-5 h-5" id="menuBar"><use href="#menu-bar"></use></svg>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+         <div class="fixed xl:hidden -right-2/3 w-2/3 bg-white h-screen z-30 top-0 bottom-0 dark:bg-[#1E1E1E] dark:text-white transition-all" id="rightMobileMenu"> <!-- add right-0  -right-2/3 --> 
+            <div class="px-3">
+                <div class="flex flex-col text-xl font-IranSans ">
+                    <div class="flex flex-row items-center justify-between border-b border-b-[#404040]/10 dark:border-b-white/25 py-4">
+                        <div class="flex flex-row gap-x-3 items-center">
+                            <img src="content/Images/logo.svg" alt="">
+                            <h1 class="text-2xl font-RokhBold ">سفرکن</h1>
+                        </div>
+                        <svg class="w-5 h-5" id="menuCloseX"><use href="#x-mark"></use></svg>
+                    </div>
+                    <div class="py-10 border-b border-b-[#404040]/10 dark:border-b-white/25">
+                        <ul class="flex flex-col gap-x-8 gap-y-6">
+                            <div class="flex gap-x-2 items-center">
+                                <svg class="w-6 h-6"><use href="#hotel"></use></svg>
+                                <li>هتل</li>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="flex gap-x-2">
+                                    <svg class="w-6 h-6"><use href="#tour"></use></svg>
+                                    <li>تور داخلی</li>
+                                </div>
+                                <i class="fa-solid fa-angle-down align-middle pr-2"></i>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <div class="flex gap-x-2">
+                                    <svg class="w-6 h-6"><use href="#tour"></use></svg>
+                                    <li>تور خارجی</li>
+                                </div>
+                                <i class="fa-solid fa-angle-down align-middle pr-2"></i>
+                            </div>
+                            <div class="flex gap-x-2 items-center">
+                                <svg class="w-6 h-6"><use href="#id-card"></use></svg>
+                                <li>بیمه مسافرتی</li>
+                            </div>                      
+                            <div class="flex gap-x-2 items-center">
+                                <svg class="w-6 h-6"><use href="#newspaper"></use></svg>
+                                <li>سفرنامه</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="flex flex-col gap-y-6 py-10">
+                        <div class="flex items-center gap-x-2">
+                            <svg class="w-6 h-6"><use href="#user-reg"></use></svg>
+                            <button> حساب کاربری</button>
+                        </div>
+                        <div class="flex items-center gap-x-2">
+                            <svg class="w-6 h-6"><use href="#basket-reg"></use></svg>
+                            <button>سبد خرید</button>
+                        </div>
+                        <div class="flex w-fit items-center gap-x-2" id="theme-toggler">
+                            <svg class="w-6 h-6"><use href="#moon"></use></svg>
+                            <button class="dark:hidden">تم تیره</button>
+                            <button class="hidden dark:inline-block">تم روشن</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+         </div>
+    </header>
+
+
+    <!-- Home -->
+    <section>
+        <div class="container">
+            <div class="relative xl:grid xl:grid-cols-2 font-RokhBold">
+                <!-- Home Right Side -->
+                <div class="pt-10 text-black dark:text-white">
+                    <div class="inline-block text-[#FF782C] bg-[#FFAA7C]/20 dark:bg-[#FFAA7C]/5 border border-[#FF782C40]/25 px-4 py-3 rounded-full xs:text-xs xl:text-xl">
+                        <h2>بسیار سفر باید تا پخته شود خامی</h2>
+                    </div>
+                    <div class="text-4xl lg:text-7xl/[140%] py-10 xl:w-4/5">
+                        <h1>دنیا را کشف کنید   زندگی را <span class="text-[#5264FF]">تجربه</span> کنید </h1>
+                    </div>
+                    <div class="hidden xl:flex flex-row gap-x-5">
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-white/25 rounded-3xl pt-3">🏕️</span>
+                            <p class="pt-2">کمپ</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-white/25 rounded-3xl pt-3">🏖️</span>
+                            <p class="pt-2">ساحل</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-white/25 rounded-3xl pt-3">🏙️</span>
+                            <p class="pt-2">شهر</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-white/25 rounded-3xl pt-3">🌴</span>
+                            <p class="pt-2">جنگل</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Home Left Side -->
+                <div class="relative text-left mt-4">
+                    <!--  -->
+                    <img src="./content/images/image01.png" alt="" class="mr-auto rounded-[32px] xl:rounded-[56px] h-72 xl:h-auto w-full object-cover">
+                    <div class="absolute top-0 left-0 text-white mt-10 ml-10">
+                        <div class="bg-white/40 py-3 px-4  xl:py-6 xl:px-8 rounded-2xl xl:rounded-[32px] border border-white/[0.61]">
+                            <div class="flex gap-x-1">
+                                <svg class="w-2 h-2 xl:w-5 xl:h-5"><use href="#location-reg"></use></svg>
+                                <h4 class="text-[8px] xl:text-base">تایلند</h4>
+                            </div>
+                            <h2 class="inline-block xl:text-[76px]/[140%] text-5xl/[140%] ">پاتایا</h2>
+                        </div>
+                        <div class="flex items-center justify-center pt-4 gap-x-2 xl:gap-x-5">
+                            <svg class="w-6 h-6 xl:w-11 xl:h-11 rotate-180 opacity-70 hover:opacity-100 hover:cursor-pointer"><use href="#arrow"></use></svg>
+                            <span class="font-RokhNum text-3xl xl:text-5xl ">01</span>
+                            <svg class="w-6 h-6 xl:w-11 xl:h-11 opacity-70 hover:opacity-100 hover:cursor-pointer"><use href="#arrow"></use></svg>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="flex xl:hidden flex-row gap-x-3 mt-10 justify-center dark:text-white">  <!-- Mobile -->
+                        <div class="text-sm text-center ">
+                            <span class="flex w-20 h-20 bg-white  dark:bg-inherit  text-[40px] items-center justify-center border border-[#404040]/25 dark:border-[white]/25 rounded-3xl pt-3">🏕️</span>
+                            <p class="pt-2">کمپ</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white dark:bg-inherit  text-[40px] items-center justify-center border border-[#404040]/25 dark:border-[white]/25 rounded-3xl pt-3">🏖️</span>
+                            <p class="pt-2">ساحل</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white  dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-[white]/25 rounded-3xl pt-3">🏙️</span>
+                            <p class="pt-2">شهر</p>
+                        </div>
+                        <div class="text-sm text-center">
+                            <span class="flex w-20 h-20 bg-white  dark:bg-inherit text-[40px] items-center justify-center border border-[#404040]/25 dark:border-[white]/25 rounded-3xl pt-3">🌴</span>
+                            <p class="pt-2">جنگل</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <div class="col-span-2 xl:flex justify-center">
+                    <div class="mt-10 xl:mt-0 xl:absolute bottom-16 bg-white dark:bg-[#1E1E1E] dark:text-white border-[#404040]/25 dark:border-white/25 flex flex-col xl:flex-row xl:items-center justify-center rounded-[58px] xl:rounded-full border px-8 py-6 font-IranSans gap-x-16">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5"><use href="#location-reg"></use></svg>
+                            <select name="" id="" class="appearance-none p-3 border-none outline-none bg-inherit">
+                                <option value="" class=" dark:bg-[#1E1E1E]">مقصد خود را انتخاب کنید</option>
+                                <option value="" class=" dark:bg-[#1E1E1E]">زنجان</option>
+                                <option value="" class=" dark:bg-[#1E1E1E]">تهران</option>
+                                <option value="" class=" dark:bg-[#1E1E1E]">ارومیه</option>
+                                <option value="" class=" dark:bg-[#1E1E1E]">تبریز</option>
+                            </select>
+                            <svg class="w-5 h-5"><use href="#chevron-down"></use></svg>
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5"><use href="#date-reg"></use></svg>
+                            <input data-jdp data-jdp-min-date="today" data-jdp-max-date="1406/12/29" type="text" name="" id="startDateInput" placeholder="تاریخ ورود" class="placeholder:text-black dark:placeholder:text-white bg-inherit px-3 py-2 xl:w-28">
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5"><use href="#date-reg"></use></svg>
+                            <input data-jdp data-jdp-min-date="today" data-jdp-max-date="1406/12/29" type="text" name="" id="endDateInput" placeholder="تاریخ خروج" class="placeholder:text-black dark:placeholder:text-white bg-inherit px-3 py-2 xl:w-28">
+                        </div>
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5"><use href="#user-reg"></use></svg>
+                            <input type="text" name="" id="" placeholder="تعداد" class="placeholder:text-black dark:placeholder:text-white bg-inherit px-3 py-2 xl:w-28">
+                        </div>
+                        <div id="dateSearchBtn" class="flex items-center justify-center bg-[#5264FF] text-white rounded-full px-14 py-4 cursor-pointer mt-5 xl:mt-0">
+                            <button>جستجو</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </section>
+
+
+    <!-- Popular places -->
+     <section data-aos="fade-up" >
+        <div class="container mt-16 xl:mt-32 ">
+            <div class="flex justify-between items-center dark:text-white">
+                <h2 class="text-xl xl:text-3xl font-RokhBold ">محبوب ترین مکان ها</h2>
+                <div class="bg-[#EAEAEA] hover:bg-gray-300 dark:bg-[#444444]  rounded-full px-6 py-3 cursor-pointer">
+                    <button class="font-IranSans">دیدن همه</button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-5 gap-y-5 pt-7 xl:pt-14 font-IranSans popular child-hover:shadow-xl child-hover:transition-all child-hover:cursor-pointer">
+                <div data-title="تور آنتالیا" data-imgsrc="content/images/popular/image 1.png" data-star="4.1" data-time="3 روز و 4 شب" data-price="45.000.000"></div>
+                <div data-title="تور دبی" data-imgsrc="content/images/popular/image 2.png" data-star="4.9" data-time="3 روز و 4 شب" data-price="65.000.000"></div>
+                <div data-title="تور مالزی" data-imgsrc="content/images/popular/image 3.png" data-star="3.9" data-time="3 روز و 4 شب" data-price="85.000.000"></div>
+            </div>
+            <div class="bg-[#D3D3D3] dark:bg-[#444444] text-white rounded-full w-[50px] h-[50px] flex items-center justify-center mt-10 mx-auto">
+                <svg class="w-6 h-6 p"><use href="#chevron-down"></use></svg>
+            </div>
+        </div>
+     </section>
+
+
+
+    <!-- Why us ? -->
+     <section data-aos="fade-up" data-aos-delay="200">
+        <div class="container">
+            <div class="mt-16 xl:mt-32 xl:bg-[url('../images/earth.png')]" id="whyUsImg">
+                <!-- <img src="content/images/earth.png" alt="" id="whyUsImg" class="hidden xl:inline-block"> -->
+                <div class="">
+                    <h2 class="text-3xl font-RokhBold dark:text-white">چرا سفر کن </h2>
+                    <div class="grid grid-cols-1 xl:grid-cols-3 p-8  xl:p-12 bg-[#5264ff] dark:bg-[#1d1d1d] dark:border-[#fbfbfb]/25 gap-x-8 gap-y-8 text-white rounded-[50px] mt-6 xl:mt-10">
+                        <div class="flex flex-col gap-y-10 items-center bg-[#7D8BFF] dark:bg-[#4a4a4a] rounded-3xl py-5 px-10 text-center">
+                            <div class="bg-[#3E72F9]/45 dark:bg-[#1e1e1e] w-16 h-16 rounded-full flex items-center justify-center">
+                                <svg class="w-10 h-10"><use href="#clock"></use></svg>
+                            </div>
+                            <h2 class="text-xl xl:text-3xl font-IranSansMedium">پشتیبانی 24 ساعته</h2>
+                            <p class="text-xs xl:text-lg font-IranSans">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                        </div>
+                        <div class="flex flex-col gap-y-10 items-center bg-[#7D8BFF] dark:bg-[#4a4a4a] rounded-3xl py-5 px-10 text-center">
+                            <div class="bg-[#3E72F9]/45 dark:bg-[#1E1E1E] w-16 h-16 rounded-full flex items-center justify-center">
+                                <svg class="w-10 h-10"><use href="#dollar"></use></svg>
+                            </div>
+                            <h2 class="text-xl xl:text-3xl font-IranSansMedium">ضمانت بهترین قیمت</h2>
+                            <p class="text-xs xl:text-lg font-IranSans">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                        </div>
+                        <div class="flex flex-col gap-y-10 items-center bg-[#7D8BFF] dark:bg-[#4a4a4a] rounded-3xl py-5 px-10 text-center">
+                            <div class="bg-[#3E72F9]/45 dark:bg-[#1e1e1e] w-16 h-16 rounded-full flex items-center justify-center">
+                                <svg class="w-10 h-10"><use href="#wifi"></use></svg>
+                            </div>
+                            <h2 class="text-xl xl:text-3xl font-IranSansMedium">رزرو آنلاین</h2>
+                            <p class="text-xs xl:text-lg font-IranSans">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+     <!-- Best-seller Tours -->
+    <section data-aos="fade-up" data-aos-delay="200">
+        <div class="container mt-16 xl:mt-32">
+            <!-- Desktop title -->
+            <div class="hidden xl:flex items-center font-RokhBold justify-between dark:text-[#fbfbfb]">
+                <div class="flex gap-x-8 items-center">
+                    <h2 class="text-3xl">پر فروش ترین تورها</h2>
+                    <div class="flex gap-x-3 text-xl/[100%] child:text-[#404040] dark:child:text-[#fbfbfb] child:opacity-80 child:cursor-pointer" id="toursTab">
+                        <h4 class="activeTab hover:opacity-100" data-id="allTours">همه تورها</h4>
+                        <h4 class="hover:opacity-100" data-id="iran">تور ایران</h4>
+                        <h4 class="hover:opacity-100" data-id="europe">تور اروپا</h4>
+                        <h4 class="hover:opacity-100" data-id="asia">تور آسیا</h4>
+                    </div>
+                </div>
+                <div class="flex gap-x-5 items-center">
+                    <svg class="w-8 h-8"><use href="#setting"></use></svg>
+                    <div class="bg-[#EAEAEA] hover:bg-gray-300 dark:bg-[#444444] rounded-full px-6 py-3 cursor-pointer">
+                        <button class="font-IranSans">دیدن همه</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Title -->
+            <div class="block xl:hidden font-RokhBold dark:text-[#fbfbfb]">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl">پر فروش ترین تورها</h2>
+                    <div class="bg-[#EAEAEA] hover:bg-gray-300 dark:bg-[#444444] rounded-full px-6 py-3 cursor-pointer mr-auto">
+                        <button class="font-IranSans">دیدن همه</button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-8">
+                    <div class="flex gap-x-3 text-lg child:text-[#404040] dark:child:text-[#fbfbfb] child:opacity-80 child:cursor-pointer" id="toursTab">
+                        <h4 class="activeTab hover:opacity-100" data-id="allTours">همه تورها</h4>
+                        <h4 class="hover:opacity-100" data-id="iran">تور ایران</h4>
+                        <h4 class="hover:opacity-100" data-id="europe">تور اروپا</h4>
+                        <h4 class="hover:opacity-100" data-id="asia">تور آسیا</h4>
+                    </div>
+                    <svg class="w-7 h-7"><use href="#setting"></use></svg>
+                </div>
+            </div>
+            <!-- Cards -->
+            <div id="bestSellerDivElems" class="grid grid-cols-1 xl:grid-cols-3 gap-x-5 gap-y-5 pt-7 xl:pt-14 font-IranSans child-hover:shadow-xl child-hover:transition-all child-hover:cursor-pointer">
+                <div id="iran" data-title="تور ایران" data-imgsrc="content/images/popular/image 2.png" data-star="4.9" data-time="3 روز و 4 شب" data-price="95.000.000"></div>
+                <div id="europe" data-title="تور اروپا" data-imgsrc="content/images/popular/image 3.png" data-star="2.1" data-time="3 روز و 4 شب" data-price="80.000.000"></div>        
+                <div id="asia" data-title="تور آسیا" data-imgsrc="content/images/popular/image 1.png" data-star="4.1" data-time="3 روز و 4 شب" data-price="13.000.000"></div>
+                <div id="europe" data-title="تور اروپا" data-imgsrc="content/images/popular/image 3.png" data-star="4.8" data-time="3 روز و 4 شب" data-price="85.000.000"></div>        
+                <div id="asia" data-title="تور آسیا" data-imgsrc="content/images/popular/image 1.png" data-star="3.5" data-time="3 روز و 4 شب" data-price="45.000.000"></div>
+                <div id="iran" data-title="تور ایران" data-imgsrc="content/images/popular/image 2.png" data-star="5.0" data-time="3 روز و 4 شب" data-price="65.000.000"></div>
+            </div>
+            <div class="bg-[#D3D3D3] dark:bg-[#444444] text-white rounded-full w-[50px] h-[50px] flex items-center justify-center mt-10 mx-auto">
+                <svg class="w-6 h-6 p"><use href="#chevron-down"></use></svg>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Download Our App -->
+     <section data-aos="fade-up" data-aos-delay="200">
+        <div class="container mt-16 xl:mt-32">
+            <a href="https://cafebazaar.ir/" target="_blank">
+                <img src="content/images/banner.png" alt="" id="ourAppImg">
+            </a>
+        </div>
+     </section>
+
+
+    
+    <!-- Comments -->
+    <section data-aos="fade-up" data-aos-delay="200"
+    >
+        <div class="container mt-16 xl:mt-32">
+            <h2 class="text-2xl xl:text-3xl font-RokhBold dark:text-white mb-5 xl:mb-10">نظرات</h2>
+            <div id="commentBoxWrapper" class="xl:h-[710px] overflow-hidden"> <!-- add style="position: relative;opacity: 80%; z-index: -10;" for max count visible comment-->
+                <div data-name="سارا محمدی" data-username="@uharvey" data-date="1404/01/01" data-profile="content/images/profile/1.jpg"></div>
+                <div data-name="علیرضا بهرامی" data-username="@alizaB" data-date="1403/08/06" data-profile="content/images/profile/2.jpg"></div>
+                <div data-name="مهسا رضایی" data-username="@mahsaRez" data-date="1403/10/27" data-profile="content/images/profile/3.jpg"  style="position: relative;opacity: 80%; z-index: -10;"></div>
+                <div data-name="مهدی توکلی" data-username="@mehdiTav" data-date="1404/02/02" data-profile="content/images/profile/3.jpg"></div>
+                <div data-name="فاطمه میرزایی" data-username="@mahsaRez" data-date="1403/10/27" data-profile="content/images/profile/3.jpg"></div>
+            </div>
+            <div class="hidden xl:flex -mt-60 h-56 gradientLight dark:gradientDark items-end justify-center rounded-[40px]">
+                <div class="font-IranSansBold text-xl flex items-end justify-center bg-[#5264ff] hover:bg-[#4553d8] transition-all text-white py-4 rounded-full cursor-pointer w-full" id="showMoreBtn">
+                    <button>مشاهده همه</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+     <footer>
+        <div class="bg-[#232323] w-full mt-16 xl:mt-32">
+            <div class="w-[90%] mx-auto py-10 text-white ">
+                <div class="flex items-center justify-between border-b border-b-[#ededed] pb-5">
+                    <div class="flex gap-x-10 font-IranSans">
+                        <a href=""><h5>صفحه اصلی</h5></a>
+                        <span>|</span>
+                        <a href=""><h5>درباره ما</h5></a>
+                        <span>|</span>
+                        <a href=""><h5>تماس</h5></a>
+                        <span>|</span>
+                    </div>
+                    <div class="flex items-center gap-x-3">
+                            <img src="content/Images/logo.svg" alt="">
+                            <h1 class="font-RokhBold ">سفرکن</h1>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center pt-5">
+                    <h3 class="font-IranSans">تمامی حقوق برای کاربر این محصول محفوظ است.</h3>
+                    <div class="flex items-center gap-x-5">
+                        <a href="https://t.me/lastxfighter" target="_blank"><i class="fa-brands fa-telegram fa-xl"></i></a>
+                        <a href="https://www.instagram.com/lastxfighter/" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>  
+     </footer>
+
+
+
+
+    <div class="overlay overlay-invisible"></div>
+
+
+    <!-- Aos init -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+    <!-- Date picker init -->
+    <script type="text/javascript" src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
+
+    <!-- Swal Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Swiper Slider -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="content/JS/app.js"></script>
+</body>
+</html>
