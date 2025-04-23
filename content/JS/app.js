@@ -110,7 +110,7 @@ toursTab.forEach(tab => {
 function placeGeneratorFunc (div) {
     div.className = "bg-white dark:bg-[#1d1d1d] dark:text-[#fbfbfb] border border-[#404040]/25 dark:border-white/25 p-4 rounded-[36px] flex flex-col hidden activeTours"
     div.insertAdjacentHTML("beforeend" , `
-            <img src="${div.dataset.imgsrc}" alt="" class="rounded-3xl">
+            <img src="${div.dataset.imgsrc}" alt="" class="rounded-3xl mx-auto">
             <div class="flex justify-between pb-2 pt-5">
                 <h2 class="font-IranSansMedium text-3xl">${div.dataset.title}</h2>
                 <div class="flex gap-x-2 items-center">
@@ -121,8 +121,8 @@ function placeGeneratorFunc (div) {
             <span class="text-gray-400">${div.dataset.time}</span>
             <div class="flex justify-between items-center pt-10">
                 <div class="flex items-center gap-x-2">
-                    <h3 class="font-RokhNum text-4xl">${div.dataset.price}<span class="text-2xl pr-2">تومان</span></h3>
-                    <span class="text-gray-400">هر فرد</span>
+                    <h3 class="font-RokhNum text-4xl sm:text-3xl xl:text-4xl">${div.dataset.price}<span class="text-2xl pr-2">تومان</span></h3>
+                    <span class="text-gray-400 sm:hidden xl:inline-block">هر فرد</span>
                 </div>
                 <div class="w-[50px] h-[50px] rounded-full bg-[#5264FF] flex items-center justify-center text-white">
                     <svg class="w-6 h-6 rotate-45"><use href="#x-mark"></use></svg>
