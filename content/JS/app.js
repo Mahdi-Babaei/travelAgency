@@ -134,14 +134,15 @@ function placeGeneratorFunc (div) {
 
 // Download App
 function ourAppImgChanger () {
-    if ($.documentElement.className.includes("dark") && window.innerWidth > 390) { // desktop dark
+    if ($.documentElement.className.includes("dark") && window.innerWidth >= 640) { // desktop dark
         ourAppImg.setAttribute("src","content/images/bannerDark.png")
-    } else if ($.documentElement.className.includes("light") && window.innerWidth !== 390) { // desktop light
+    } else if ($.documentElement.className.includes("light") && window.innerWidth >= 640) { // desktop light
         ourAppImg.setAttribute("src","content/images/banner.png")
-    } else if ($.documentElement.className.includes("dark") && window.innerWidth === 390) { // mobile dark
+    } else if ($.documentElement.className.includes("dark") && window.innerWidth >= 390 && window.innerWidth < 640) { // mobile dark
         ourAppImg.setAttribute("src","content/images/bannerMobileDark.png")
-    } else if ($.documentElement.className.includes("light") && window.innerWidth === 390) { // mobile light
+    } else if ($.documentElement.className.includes("light") && window.innerWidth >= 390 && window.innerWidth < 640) { // mobile light
         ourAppImg.setAttribute("src","content/images/bannerMobile.png")
+
     }
 }
 
